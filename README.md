@@ -4,5 +4,5 @@
 |  NMec | Name                | email                   |
 | ----: | ------------------- | ----------------------- |
 | 97147 | Jodionísio Muachifi | jodionsiomuachifi@ua.pt |
-| --- |  Name    | name@ua.pt   |
+| 118200 |  Miguel Simões    | miguellbsimoes@ua.pt   |
 | --- | TName    | name@ua.pt    |
