@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <ctype.h> // Include ctype.h for isdigit function
+#include <ctype.h>  // Include ctype.h for isdigit function
 #include <string.h> // Include string.h for strlen function
 #include <stdlib.h> // Include stdlib.h for atoi function
 
 /*
-    Implement a C program, print_bit, that reads an integer, i, from the keyboard and a bit position, p, and prints the corresponding 
+    Implement a C program, print_bit, that reads an integer, i, from the keyboard and a bit position, p, and prints the corresponding
     value of that bit in the binary representation of i. Note:
     consider that p = 0 corresponds to the position of the least significant bit.
 */
@@ -48,6 +48,14 @@ int main(void)
             input[strlen(input) - 1] = '\0';
         }
 
+        // Check if the input is negative
+        if (input[0] == '-')
+        {
+            printf("The number cannot be negative. Enter a non-negative number: ");
+            continue;
+        }
+
+        // Check if the input is an integer
         if (!isInteger(input))
         {
             printf("Invalid input. Please enter an integer: ");
@@ -55,15 +63,7 @@ int main(void)
         }
 
         i = atoi(input); // Convert the input string to an integer
-
-        if (i < 0)
-        {
-            printf("The number cannot be negative. Enter a non-negative number: ");
-        }
-        else
-        {
-            break;
-        }
+        break;
     }
 
     printf("Enter a bit position: ");
@@ -75,13 +75,20 @@ int main(void)
             printf("Error reading input.\n");
             return 1;
         }
-
         // Remove trailing newline if present
         if (input[strlen(input) - 1] == '\n')
         {
             input[strlen(input) - 1] = '\0';
         }
 
+        // Check if the input is negative
+        if (input[0] == '-')
+        {
+            printf("Bit position cannot be negative. Enter a non-negative bit position: ");
+            continue;
+        }
+
+        // Check if the input is an integer
         if (!isInteger(input))
         {
             printf("Invalid input. Please enter a valid bit position: ");
@@ -89,15 +96,7 @@ int main(void)
         }
 
         p = atoi(input); // Convert the input string to an integer
-
-        if (p < 0)
-        {
-            printf("Bit position cannot be negative. Enter a non-negative bit position: ");
-        }
-        else
-        {
-            break;
-        }
+        break;
     }
 
     int bitValue = print_bit(i, p);
@@ -105,10 +104,4 @@ int main(void)
 
     return 0;
 }
-
-
-
-
-
-
 
