@@ -38,7 +38,7 @@ Convert binary to integer
 ```
 
 ### Unit test
-You can a unit test simply as follow
+You can test it simply as follow
 ```
  ./unit_tests
 ```
