@@ -36,3 +36,9 @@ Convert binary to integer
 ```
  ./ex4 bti 11010111
 ```
+
+### Unit test
+You can a unit test simply as follow
+```
+ ./unit_tests
+```
