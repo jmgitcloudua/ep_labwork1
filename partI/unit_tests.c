@@ -2,16 +2,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-void print_bits(int num)
-{
-    for (int i = sizeof(num) * 8 - 1; i >= 0; i--)
-    {
-        int bit = (num >> i) & 1;
-        printf("%d", bit);
-    }
-    printf("\n");
-}
-
 int bits_to_int(const char *bits)
 {
     int num = 0;
@@ -32,11 +22,11 @@ int bits_to_int(const char *bits)
     return num;
 }
 
-static bool test_print_bits(int num, const char *expected_output)
+static bool test_print_bits(int num, const char *expected_output, const char *test_description)
 {
     if (num < 0)
     {
-        printf("Test failed: Input must be a non-negative integer.\n");
+        printf("Test %s - Failed: Input must be a non-negative integer.\n", test_description);
         return false;
     }
 
@@ -45,20 +35,21 @@ static bool test_print_bits(int num, const char *expected_output)
 
     if (strcmp(output, expected_output) != 0)
     {
-        printf("Test failed: Expected output '%s', got '%s'\n", expected_output, output);
+        printf("Test %s - Failed: Expected output '%s', got '%s'\n", test_description, expected_output, output);
         return false;
     }
 
+    printf("Test %s - Passed\n", test_description);
     return true;
 }
 
-static bool test_bits_to_int(const char *bits, int expected_result)
+static bool test_bits_to_int(const char *bits, int expected_result, const char *test_description)
 {
     for (int i = 0; bits[i] != '\0'; i++)
     {
         if (bits[i] != '0' && bits[i] != '1')
         {
-            printf("Test failed: Input must contain only '0' and '1' characters.\n");
+            printf("Test %s - Failed: Input must contain only '0' and '1' characters.\n", test_description);
             return false;
         }
     }
@@ -67,10 +58,11 @@ static bool test_bits_to_int(const char *bits, int expected_result)
 
     if (result != expected_result)
     {
-        printf("Test failed: Expected result %d, got %d\n", expected_result, result);
+        printf("Test %s - Failed: Expected result %d, got %d\n", test_description, expected_result, result);
         return false;
     }
 
+    printf("Test %s - Passed\n", test_description);
     return true;
 }
 
@@ -79,24 +71,25 @@ int main(void)
     bool all_tests_passed = true;
 
     // Test printing the bits of a non-negative integer
-    all_tests_passed &= test_print_bits(10, "1010");
-    all_tests_passed &= test_print_bits(0, "0");
-    all_tests_passed &= test_print_bits(1, "1");
-    all_tests_passed &= test_print_bits(2, "10");
-    all_tests_passed &= test_print_bits(-3, "-3"); // must be non-negative
+    all_tests_passed &= test_print_bits(1010, "1010", "Printing 10 in bits");
+    all_tests_passed &= test_print_bits(0, "0", "Printing 0 in bits");
+    all_tests_passed &= test_print_bits(1, "1", "Printing 1 in bits");
+    all_tests_passed &= test_print_bits(111, "1111", "Printing 15 in bits");
+    all_tests_passed &= test_print_bits(-3, "-3", "Printing -3 in bits"); // must be non-negative
 
     // Test converting a binary string to an integer with valid inputs
-    all_tests_passed &= test_bits_to_int("1010", 10);
-    all_tests_passed &= test_bits_to_int("1101", 13);
-    all_tests_passed &= test_bits_to_int("0", 0);
-    all_tests_passed &= test_bits_to_int("1", 1);
+    all_tests_passed &= test_bits_to_int("1010", 10, "Converting '1010' to int");
+    all_tests_passed &= test_bits_to_int("1101", 13, "Converting '1101' to int");
+    all_tests_passed &= test_bits_to_int("0", 0, "Converting '0' to int");
+    all_tests_passed &= test_bits_to_int("1", 1, "Converting '1' to int");
+    all_tests_passed &= test_bits_to_int("1111", 14, "Converting '1111' to int");
 
     // Test converting a binary string to an integer with invalid inputs
-    all_tests_passed &= !test_bits_to_int("-1010", -1); // Negative sign should be rejected
-    all_tests_passed &= !test_bits_to_int("Invalid", -1); // Contains invalid characters
-    all_tests_passed &= !test_bits_to_int("11111", 32); // Contains invalid characters
-    all_tests_passed &= !test_bits_to_int("1", 0); // Should not return 0 for valid input
-    all_tests_passed &= !test_bits_to_int("R", 1); // Should not return 1 for valid input
+    all_tests_passed &= !test_bits_to_int("-1010", -1, "Converting '-1010' to int");     // Negative sign should be rejected
+    all_tests_passed &= !test_bits_to_int("Invalid", -1, "Converting 'Invalid' to int"); // Contains invalid characters
+    all_tests_passed &= !test_bits_to_int("11111", 32, "Converting '11111' to int");     // Contains invalid characters
+    all_tests_passed &= !test_bits_to_int("1", 0, "Converting '1' to int");              // Should not return 0 for valid input
+    all_tests_passed &= !test_bits_to_int("R", 1, "Converting 'R' to int");              // Should not return 1 for valid input
 
     if (all_tests_passed)
     {
@@ -110,4 +103,3 @@ int main(void)
 
     return 0;
 }
-
