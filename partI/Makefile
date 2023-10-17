@@ -1,22 +1,49 @@
+
+# Make file for c programs
+
+CFLAGS= -DNDEBUG
+
+# source files
+
+SRC = $(wildcard *.c)
+
+# object files
+
+OBJ = $(SRC:.c=.o)
+
+# executable files
+
+EXE = $(SRC:.c=)
+
+# compiler
+
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
-SRCS = $(wildcard ex*.c)
-EXECS = $(SRCS:.c=)
-TEST_EXEC = unit_tests
 
-.PHONY: all clean test
+# compiler flags
 
-all: $(EXECS) $(TEST_EXEC)
+CFLAGS = -Wall -g
 
-%: %.c
-	$(CC) $(CFLAGS) -o $@ $<
+# linker flags
 
-$(TEST_EXEC): unit_tests.c
-	$(CC) $(CFLAGS) -o $@ $^
+LDFLAGS = -lm
 
-test: $(TEST_EXEC)
-	./$(TEST_EXEC)
+# default target
+
+all: $(EXE)
+
+# link
+
+%: %.o
+	$(CC) $(CFLAGS) -o $@ $< $(LDFLAGS)
+
+# compile
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+# clean
 
 clean:
-	rm -f $(EXECS) $(TEST_EXEC)
+	rm -f $(OBJ) $(EXE) *~
 
+# end of file
