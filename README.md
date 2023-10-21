@@ -4,7 +4,7 @@
 |  NMec | Name                | email                   |
 | ----: | ------------------- | ----------------------- |
 | 97147 | Jodionísio Muachifi | jodionsiomuachifi@ua.pt |
-| 118200 |  Miguel Simões    | miguellbsimoes@ua.pt   |
+| 118200 |  Miguel Simões    | miguelbsimoes@ua.pt   |
 | 118485 | Gustavo Reggio    | gustavo.reggio@ua.pt    |
 
 ## Instructions to compile/run PartI:
