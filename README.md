@@ -4,7 +4,7 @@
 |  NMec | Name                | email                   |
 | ----: | ------------------- | ----------------------- |
 | 97147 | Jodionísio Muachifi | jodionsiomuachifi@ua.pt |
-| 118200 |  Miguel Simões    | miguelbsimoes@ua.pt   |
+| 118200 |  Miguel Simões    | miguellbsimoes@ua.pt   |
 | 118485 | Gustavo Reggio    | gustavo.reggio@ua.pt    |
 
 ## Instructions to compile/run PartI:
@@ -42,3 +42,21 @@ You can test it simply as follow
 ```
  ./unit_tests
 ```
+
+## Instructions to compile/run PartII:
+**Memo**: You do not need to clone the repository again if you have already done so.
+```
+ git clone https://github.com/jmgitcloudua/ep_labwork1.git
+ cd partII
+ make
+ ```
+
+### Exercise Number 5
+In this exercice we have:
+- nn_base.h - composed by neural network structure and functions prototypes
+- nn_base.c - composed by functions development
+- base.c - composed by tests of the developed functions
+```
+ ./base
+```
+
