@@ -55,7 +55,7 @@ You can test it simply as follow
 In this exercice we have:
 - nn_base.h - composed by neural network structure and functions prototypes
 - nn_base.c - composed by functions development
-- base.c - composed by tests of the developed functions
+- base.c - composed by tests of developed functions
 ```
  ./base
 ```
