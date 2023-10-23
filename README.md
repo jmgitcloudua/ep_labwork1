@@ -43,6 +43,11 @@ You can test it simply as follow
  ./unit_tests
 ```
 
+### Clean files (.o)
+```
+ make clean
+ ```
+
 ## Instructions to compile/run PartII:
 **Memo**: You do not need to clone the repository again if you have already done so.
 ```
@@ -59,4 +64,8 @@ In this exercice we have:
 ```
  ./base
 ```
+### Clean files (.o)
+```
+ make clean
+ ```
 
