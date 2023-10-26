@@ -64,6 +64,11 @@ In this exercice we have:
 ```
  ./base
 ```
+### Unit test
+You can test it simply as follow
+```
+ ./unit_tests
+```
 ### Clean files (.o)
 ```
  make clean
