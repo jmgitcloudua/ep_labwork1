@@ -44,6 +44,6 @@ all: $(EXE)
 # clean
 
 clean:
-	rm -f $(OBJ) $(EXE) *~
+	rm -f $(OBJ) $(EXE) 
 
 # end of file
